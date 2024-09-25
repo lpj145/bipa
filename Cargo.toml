@@ -5,6 +5,8 @@ edition = "2021"
 
 [dependencies]
 axum = "0.7.6"
+chrono = "0.4.38"
 reqwest = { version = "0.12.7", features = ["json"] }
+rust_decimal = "1.36.0"
 serde = { version = "1.0.210", features = ["derive"] }
 tokio = { version = "1.40.0", features = ["full"] }

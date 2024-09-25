@@ -5,6 +5,7 @@ use lightning_ingestor::run_ingestor;
 mod app_context;
 mod lightning_fetcher;
 mod lightning_ingestor;
+mod node_data;
 
 async fn list_nodes() -> &'static str {
     "data"
@@ -14,7 +15,7 @@ async fn list_nodes() -> &'static str {
 async fn main() {
     let app_context = AppContext::new();
     let app = Router::new()
-        .route("/", get(list_nodes))
+        .route("/nodes", get(list_nodes))
         .with_state(app_context.clone());
 
     let ingestor_handler = run_ingestor(app_context);
