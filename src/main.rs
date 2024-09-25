@@ -1,4 +1,6 @@
 use axum::{routing::get, Json, Router, http::StatusCode};
+
+mod lightning_fetcher;
 mod ingestor;
 
 async fn list_nodes() -> &'static str {
