@@ -3,8 +3,8 @@ use axum::{routing::get, Router};
 use lightning_ingestor::run_ingestor;
 
 mod app_context;
-mod lightning_ingestor;
 mod lightning_fetcher;
+mod lightning_ingestor;
 
 async fn list_nodes() -> &'static str {
     "data"
