@@ -1,0 +1,42 @@
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-4.9.3
+
+# NOTE: If you generated this yaml from an unprivileged and rootless podman container on an SELinux
+# enabled system, check the podman generate kube man page for steps to follow to ensure that your pod/container
+# has the right permissions to access the volumes added.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2024-09-25T16:21:57Z"
+  labels:
+    app: agitatedlamarr-pod
+  name: agitatedlamarr-pod
+spec:
+  containers:
+  - args:
+    - mongod
+    env:
+    - name: TERM
+      value: xterm
+    image: docker.io/library/mongo:latest
+    name: agitatedlamarr
+    ports:
+    - containerPort: 27017
+      hostPort: 27017
+    stdin: true
+    tty: true
+    volumeMounts:
+    - mountPath: /data/configdb
+      name: mongo-storage
+    - mountPath: /data/db
+      name: mongodata
+  volumes:
+  - name: mongo-storage
+    persistentVolumeClaim:
+      claimName: 311a2eb5668dd14e01f54a4950e8da473c7099cf02b9c494a8ffdffad32dd7a8
+  - name: mongodata
+    persistentVolumeClaim:
+      claimName: 252d470b7a3bb785a955d8e1503cf4c3b3fd5e64919c97e6992b1b8a0ab81cae
