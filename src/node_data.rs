@@ -33,7 +33,7 @@ impl NodeDocument {
         }
 
         let capacity = Decimal::new(response.capacity, 0);
-        let capacity = capacity / Decimal::new(100_000_000, 8);
+        let capacity = capacity * Decimal::new(000_000_001, 8);
         // We're we have a strange thing:
         // In the "Endpoint para exposição das informações"
         // The response is formatted with dots
