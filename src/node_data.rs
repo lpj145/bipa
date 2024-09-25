@@ -43,7 +43,7 @@ impl NodeDocument {
 
         Ok(NodeDocument {
             alias: response.alias,
-            capacity: capacity,
+            capacity,
             first_seen: unix_time.unwrap().to_rfc3339(),
             public_key: response.public_key,
         })
@@ -65,8 +65,7 @@ mod tests {
     use super::NodeDocument;
 
     #[test]
-    fn it_parses_as_expected()
-    {
+    fn it_parses_as_expected() {
         let response = LightningResponse {
             capacity: 550_000,
             first_seen: 1727278230,
@@ -74,7 +73,7 @@ mod tests {
         };
 
         let parsed = NodeDocument::try_from(response);
-        assert_eq!(parsed.is_ok(), true);
+        assert!(parsed.is_ok());
         let parsed = parsed.unwrap();
         assert_eq!(&parsed.first_seen, "2024-09-25T15:30:30+00:00");
         assert_eq!(&parsed.capacity, "0.00550000")
