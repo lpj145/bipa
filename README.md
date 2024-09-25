@@ -30,3 +30,5 @@ It no handle stream, if it handle stream it could work for decades without crash
 
 ## Is there any other information you’d like us to know?
 I can't make the test pass right now, but I'm really curious about the Sats to BTC scale numbers.
+
+I didn't find any place on the test docs about duplicating data of lightning network on database.
